@@ -19,33 +19,38 @@
 /******************************************************************************\
  * Some counters for tracking how many callbacks of each kind are encountered
 \******************************************************************************/
-std::atomic<uint64_t> n_thread_begin;
-std::atomic<uint64_t> n_thread_end;
-std::atomic<uint64_t> n_parallel_begin;
-std::atomic<uint64_t> n_parallel_end;
-std::atomic<uint64_t> n_implicit_task_created;
-std::atomic<uint64_t> n_implicit_task_completed;
-std::atomic<uint64_t> n_explicit_task;
-std::atomic<uint64_t> n_task_dependences;
-std::atomic<uint64_t> n_task_dependence;
-std::atomic<uint64_t> n_task_schedule_others;
-std::atomic<uint64_t> n_task_schedule_cancel;
-std::atomic<uint64_t> n_task_schedule_yield;
-std::atomic<uint64_t> n_task_schedule_complete;
-std::atomic<uint64_t> n_task_sync_region;
-std::atomic<uint64_t> n_task_sync_region_begin_barrier;
-std::atomic<uint64_t> n_task_sync_region_begin_taskwait;
-std::atomic<uint64_t> n_task_sync_region_begin_taskgroup;
-std::atomic<uint64_t> n_task_sync_region_end_barrier;
-std::atomic<uint64_t> n_task_sync_region_end_taskwait;
-std::atomic<uint64_t> n_task_sync_region_end_taskgroup;
-std::atomic<uint64_t> n_task_sync_region_wait;
-std::atomic<uint64_t> n_task_sync_region_wait_begin_barrier;
-std::atomic<uint64_t> n_task_sync_region_wait_begin_taskwait;
-std::atomic<uint64_t> n_task_sync_region_wait_begin_taskgroup;
-std::atomic<uint64_t> n_task_sync_region_wait_end_barrier;
-std::atomic<uint64_t> n_task_sync_region_wait_end_taskwait;
-std::atomic<uint64_t> n_task_sync_region_wait_end_taskgroup;
+#ifdef ATOMIC
+  typedef std::atomic<uint64_t> counter_int;
+#else
+  typedef uint64_t counter_int; 
+#endif
+counter_int n_thread_begin;
+counter_int n_thread_end;
+counter_int n_parallel_begin;
+counter_int n_parallel_end;
+counter_int n_implicit_task_created;
+counter_int n_implicit_task_completed;
+counter_int n_explicit_task;
+counter_int n_task_dependences;
+counter_int n_task_dependence;
+counter_int n_task_schedule_others;
+counter_int n_task_schedule_cancel;
+counter_int n_task_schedule_yield;
+counter_int n_task_schedule_complete;
+counter_int n_task_sync_region;
+counter_int n_task_sync_region_begin_barrier;
+counter_int n_task_sync_region_begin_taskwait;
+counter_int n_task_sync_region_begin_taskgroup;
+counter_int n_task_sync_region_end_barrier;
+counter_int n_task_sync_region_end_taskwait;
+counter_int n_task_sync_region_end_taskgroup;
+counter_int n_task_sync_region_wait;
+counter_int n_task_sync_region_wait_begin_barrier;
+counter_int n_task_sync_region_wait_begin_taskwait;
+counter_int n_task_sync_region_wait_begin_taskgroup;
+counter_int n_task_sync_region_wait_end_barrier;
+counter_int n_task_sync_region_wait_end_taskwait;
+counter_int n_task_sync_region_wait_end_taskgroup;
 
 #include "callbacks.hpp" 
 

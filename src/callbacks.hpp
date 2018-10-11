@@ -32,7 +32,7 @@ on_ompt_callback_thread_begin(
   n_thread_begin++;
   uint64_t tid = alloc_and_init_own_data(thread_data, my_next_id());
 #ifdef DEBUG
-  printf("Hello from thread %lu", tid);
+  printf("Begin thread %lu\n", tid);
 #endif 
 }
 
@@ -43,7 +43,7 @@ on_ompt_callback_thread_end(
   n_thread_end++; 
   uint64_t tid = get_own_data(ompt_get_thread_data());
 #ifdef DEBUG
-  printf("Goodbye from thread %lu", tid);
+  printf("End thread %lu\n", tid);
 #endif 
 }
 
